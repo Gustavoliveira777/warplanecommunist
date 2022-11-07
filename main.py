@@ -34,12 +34,13 @@ fundo = scale(load(FUNDO_URL),
 
 # Espaço do display
 grupo_inimigo = Group()
-grupo_chefao = Group()
+enemys_group = Group()
 players_group = Group()
 player = Player(players_group)
+inimigo = Enemy(players_group)
 grupo_geral = GroupSingle(player)
 
-grupo_inimigo.add(Enemy())
+grupo_inimigo.add(inimigo)
 # grupo_chefao.add(Chefao())
 
 round = 0
@@ -49,23 +50,26 @@ count = 1
 
 while True:
     clock.tick(120)
-    if round % 120 == 0:
-        grupo_inimigo.add(Enemy())
+    # if round % 120 == 0:
+    #     grupo_inimigo.add(inimigo)
 
     superficie.blit(fundo, (
         0, 0))  # Faço o Bit Blit na imagem no ponto 0,0 do plano definimo, com isso consigo inserir a imagem no jogo.
     grupo_geral.draw(superficie)  # Desenhar o objeto no plano
+    enemys_group.draw(superficie) # Desenhar o objeto
 
     if (morte < 1):
         grupo_inimigo.draw(superficie)
         grupo_inimigo.update()
         disparo = 0
-    else:
-        grupo_chefao.draw(superficie)
-        grupo_chefao.update()
+    # else:
+    #     grupo_inimigo.draw(superficie)
+    #     grupo_chefao.draw(superficie)
+    #     grupo_chefao.update()
 
     players_group.draw(superficie)
-
+    enemys_group.draw(superficie) # Desenhar o objeto
+    enemys_group.update() # Desenhar o objeto
     grupo_geral.update()
     players_group.update()
 
@@ -80,6 +84,7 @@ while True:
                     count = 1
                 else:
                     player.atirar()
+                    inimigo.atirar()
                     count += 1
 
 
@@ -91,8 +96,8 @@ while True:
     else:
         resposta = False
 
-    if groupcollide(players_group, grupo_chefao, True, resposta):
-        disparo += 1
+    # if groupcollide(players_group, grupo_chefao, True, resposta):
+    #     disparo += 1
 
     round += 1
     display.update()  # a função update atualiza os frames.

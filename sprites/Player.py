@@ -3,7 +3,7 @@ from pygame.image import load
 from pygame.sprite import Sprite
 from pygame.transform import scale
 
-import Shot
+from sprites.Shot import Shot
 from sprites.Torpedo import Torpedo
 from utils.constants import AIRPLANE_SIZE
 
@@ -33,7 +33,7 @@ class Player(Sprite):  # criamos o primeiro sprint que irá compor o jogo, o obj
     def atirar(self):
         if len(self.tiro) < 15:
             self.tiro.add(
-                Shot(*self.rect.center)
+                Shot(*self.rect.center,False)
             )
 
     def atirarTorpedo(self):
