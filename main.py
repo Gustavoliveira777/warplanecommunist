@@ -205,8 +205,8 @@ while True:
             morteRecenteP2 = True
 
     if groupcollide(torpedo_player2, grupo_player1, True, False): #Morte na bala do Player 1
-        danoPlayer1 += 1
-        pontosPlayer2 += 0.10
+        danoPlayer1 += 3
+        pontosPlayer2 += 0.5
         if danoPlayer1 >= 10:
             player1.kill()
             danoPlayer1 = 0
@@ -214,8 +214,8 @@ while True:
             pontosPlayer2 += 5
             morteRecenteP1 = True
     if groupcollide(fogo_player2, grupo_player1, True, False): #Morte por torpedo do Player 1
-        danoPlayer1 += 3
-        pontosPlayer2 += 0.5
+        danoPlayer1 += 1
+        pontosPlayer2 += 0.1
         if danoPlayer1 >= 10:
             player1.kill()
             danoPlayer1 = 0
